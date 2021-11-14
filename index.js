@@ -1,5 +1,5 @@
 const express = require('express');
-
+var cors = require('cors')
 const graphql = require('graphql');
 const {GraphQLObjectType, GraphQLSchema, GraphQLInt, GraphQLString, GraphQLList} = graphql
 const {graphqlHTTP} = require('express-graphql');
@@ -12,7 +12,7 @@ const schema = require('./schemas/index')
 
 
 
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', cors(), graphqlHTTP({
     schema,
     graphiql:true
 }))
